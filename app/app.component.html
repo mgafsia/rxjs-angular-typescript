@@ -2,8 +2,16 @@
 
 <p>Open the console below to see results. </p>
 
-<div *ngFor='let e of interval$ | async'> 
-   <p> {{e.name}}
+<div id=container>
+  <div id=interval> 
+    <div *ngFor='let e of interval$ | async'>
+      <p> {{e.name}}
+    </div>
+  </div>
+  <div id=timer > 
+    <p *ngFor='let e of timer$ | async' > {{e.name}} 
+  </div>
 </div>
+
 
  

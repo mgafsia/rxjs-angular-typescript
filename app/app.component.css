@@ -1,3 +1,19 @@
 p {
   font-family: Lato;
 }
+
+#container {
+  display: flex;  
+}
+
+#interval {
+  display: inline-block;
+  color: blue;
+  width: 50%;  
+}
+
+#timer {
+  display: inline-block;
+  color: red;
+  width: 50%;
+}

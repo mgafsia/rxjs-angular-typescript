@@ -14,7 +14,7 @@ export class AppComponent implements OnInit  {
         model: '911'
       },
       {
-        brand: 'porsche',
+        brand: 'Renault',
         model: 'macan'
       },
       {
@@ -26,13 +26,31 @@ export class AppComponent implements OnInit  {
         model: 'urus'
       }
     ];  
-
-    interval$ = interval(2200).pipe(map(i=> [{name: 'car 1'},{name: 'car 2'}]));
+    interval$;
     timer$;
 
-    ngOnInit() {
-      this.interval$ 
-      
+    /*
+    // in the service
+getVehicles(){
+    return Observable.interval(2200).map(i=> [{name: 'car 1'},{name: 'car 2'}])
+}
+
+// in the controller
+vehicles: Observable<Array<any>>
+ngOnInit() {
+    this.vehicles = this._vehicleService.getVehicles();
+}
+
+// in template
+<div *ngFor='let vehicle of vehicles | async'>
+    {{vehicle.name}}
+</div>
+*/
+
+    ngOnInit() {    
+      this.interval$ = interval(1000).pipe(take(4)).pipe(map(i=> [{name: this.cars[i].brand}]));
+      this.timer$ = timer(0, 1000).pipe(map(i=> [{name: 'car 1'},{name: 'car 2'},{name: 'car 3'}]));
+      // 
       this.helloWorldRxJs();
       this.displyATimerEvenEvery600msOnly10Times();
       this.useDelay();
